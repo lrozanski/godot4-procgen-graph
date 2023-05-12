@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckk55cbwrxxir"]
+
+[ext_resource type="PackedScene" uid="uid://cte8imd36h1v1" path="res://addons/mapgen/nodes/map_input_node.tscn" id="1_7ruf5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+offset_right = 1151.0
+offset_bottom = 646.0
+scroll_offset = Vector2(-40, -40)
+
+[node name="MapInputNode" parent="GraphEdit" instance=ExtResource("1_7ruf5")]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 340.0
+offset_bottom = 255.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

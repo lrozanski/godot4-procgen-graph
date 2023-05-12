@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://cte8imd36h1v1"]
+
+[ext_resource type="Script" path="res://addons/mapgen/MapInputNode.cs" id="1_180ud"]
+
+[node name="MapInputNode" type="GraphNode"]
+custom_minimum_size = Vector2(300, 200)
+offset_right = 178.0
+offset_bottom = 256.0
+mouse_filter = 1
+title = "Map Input"
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(0, 0.764706, 0.309804, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_180ud")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "TileMap"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Node path"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Assign"
