@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://v11g1v2csuvs"]
+
+[ext_resource type="Resource" uid="uid://c46jfcnlw5ag3" path="res://examples/basic/map_input.tres" id="1_hs66v"]
+[ext_resource type="Script" path="res://addons/mapgen/resources/MapGenResource.cs" id="1_uc7mv"]
+
+[resource]
+script = ExtResource("1_uc7mv")
+MapInputNode = ExtResource("1_hs66v")

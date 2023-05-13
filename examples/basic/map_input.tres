@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c46jfcnlw5ag3"]
+
+[ext_resource type="Script" path="res://addons/mapgen/resources/MapInputNodeResource.cs" id="1_1oc28"]
+
+[resource]
+script = ExtResource("1_1oc28")
+Seed = 3400118

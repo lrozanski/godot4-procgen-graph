@@ -1,40 +1,26 @@
 using Godot;
-using procgengraph.addons.mapgen.editor;
+using procgengraph.addons.mapgen.resources;
 
-namespace procgengraph;
+namespace procgengraph.addons.mapgen;
 
 [Tool]
 public partial class MapInputNode : GraphNode {
 
-    public EditorInterface EditorInterface { get; set; }
+    [Export]
+    public Vector2I MapSize { get; set; }
 
     [Export]
-    private TileMap TileMap { get; set; }
+    public int Seed { get; set; }
 
-    [Export]
-    private TileSet TileSet { get; set; }
+    public override void _EnterTree() { }
 
-    [Export]
-    private Vector2I MapSize { get; set; }
+    public override void _ExitTree() { }
 
-    private SceneTreeDialog sceneTreeDialog;
+    public void LoadState(MapInputNodeResource mapInput) {
+        var seedInput = GetNode<SpinBox>("%Seed");
 
-    public override void _EnterTree() {
-        sceneTreeDialog ??= new SceneTreeDialog();
-        AddChild(sceneTreeDialog);
-
-        // sceneTreeDialog.InitTree(MapGen.EditorSceneRoot);
-        sceneTreeDialog.NodeSelected += selected => { GetNode<LineEdit>("HBoxContainer/LineEdit").Text = selected; };
-
-        GetNode<Button>("HBoxContainer/Button").Pressed += () => {
-            sceneTreeDialog.InitTree(EditorInterface.GetEditedSceneRoot());
-            sceneTreeDialog.PopupCentered();
-        };
-    }
-
-    public override void _ExitTree() {
-        RemoveChild(sceneTreeDialog);
-        sceneTreeDialog.Free();
+        seedInput.Value = mapInput.Seed;
+        seedInput.ValueChanged += value => { mapInput.Seed = (int) value; };
     }
 
 }
