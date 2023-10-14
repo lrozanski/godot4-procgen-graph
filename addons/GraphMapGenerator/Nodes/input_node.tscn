@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://gjkcgl5q8351"]
+
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/InputNode.cs" id="1_jjcms"]
+
+[node name="InputNode" type="GraphNode"]
+offset_right = 224.0
+offset_bottom = 152.0
+title = "Input"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = true
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = true
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_jjcms")
+Width = 1
+Height = 1
+
+[node name="Seed" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Seed"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
+text = "Seed:"
+
+[node name="SpinBox" type="SpinBox" parent="Seed"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1e+09
+
+[node name="Width" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Width"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
+text = "Width:"
+
+[node name="SpinBox" type="SpinBox" parent="Width"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 1e+09
+value = 1.0
+
+[node name="Height" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Height"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
+text = "Height:"
+
+[node name="SpinBox" type="SpinBox" parent="Height"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 1e+09
+value = 1.0
