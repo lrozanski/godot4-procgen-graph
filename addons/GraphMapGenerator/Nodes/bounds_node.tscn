@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/BoundsNode.cs" id="1_6vwl8"]
 
 [node name="BoundsNode" type="GraphNode"]
-offset_right = 224.0
-offset_bottom = 152.0
+offset_right = 335.0
+offset_bottom = 185.0
 title = "Bounds"
-slot/0/left_enabled = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 0.501961, 0.0784314, 1)
 slot/0/left_icon = null
 slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/0/right_type = 3
+slot/0/right_color = Color(1, 1, 0.0784314, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 slot/1/left_enabled = true
@@ -42,7 +42,26 @@ slot/3/right_type = 0
 slot/3/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
+slot/4/left_enabled = true
+slot/4/left_type = 0
+slot/4/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/4/left_icon = null
+slot/4/right_enabled = true
+slot/4/right_type = 0
+slot/4/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/4/right_icon = null
+slot/4/draw_stylebox = true
 script = ExtResource("1_6vwl8")
+
+[node name="Bounds" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Bounds"
+horizontal_alignment = 2
 
 [node name="X" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -25,9 +25,11 @@ right_disconnects = true
 script = ExtResource("1_jj0xo")
 
 [node name="PopupMenu" type="PopupMenu" parent="GraphEdit"]
-item_count = 1
+item_count = 2
 item_0/text = "Bounds"
 item_0/id = 0
+item_1/text = "Shape"
+item_1/id = 1
 script = ExtResource("5_ee20d")
 
 [node name="InputNode" parent="GraphEdit" instance=ExtResource("1_w8i4o")]
