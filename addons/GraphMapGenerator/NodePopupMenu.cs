@@ -18,9 +18,14 @@ public partial class NodePopupMenu : PopupMenu {
         graphEdit = Owner.GetNode<MapGeneratorGraphEdit>("GraphEdit");
         graphEdit.PopupRequest += position => {
             nodePosition = (position + graphEdit.ScrollOffset) / graphEdit.Zoom;
-            var popupRect = new Rect2I((Vector2I) position, new Vector2I(100, 100));
 
-            PopupOnParent(popupRect);
+            if (Engine.IsEditorHint()) {
+                var popupRect = new Rect2I((Vector2I) (graphEdit.GetGlobalRect().Position + position), new Vector2I(100, 100));
+                Popup(popupRect);
+            } else {
+                var popupRect = new Rect2I((Vector2I) position, new Vector2I(100, 100));
+                PopupOnParent(popupRect);
+            }
         };
 
         IdPressed += id => {
