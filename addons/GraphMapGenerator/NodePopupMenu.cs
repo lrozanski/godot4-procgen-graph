@@ -17,11 +17,12 @@ public partial class NodePopupMenu : PopupMenu {
     public override void _EnterTree() {
         graphEdit = Owner.GetNode<MapGeneratorGraphEdit>("GraphEdit");
         graphEdit.PopupRequest += position => {
-            nodePosition = position + graphEdit.ScrollOffset;
-            Position = (Vector2I) position;
-            Show();
+            nodePosition = (position + graphEdit.ScrollOffset) / graphEdit.Zoom;
+            var popupRect = new Rect2I((Vector2I) position, new Vector2I(100, 100));
+
+            PopupOnParent(popupRect);
         };
-        
+
         IdPressed += id => {
             var node = IdToNodeScene[id].Instantiate<GraphNode>();
             node.PositionOffset = nodePosition;
