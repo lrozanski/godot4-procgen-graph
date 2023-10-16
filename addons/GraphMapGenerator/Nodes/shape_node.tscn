@@ -39,12 +39,7 @@ horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="ShapeType"]
 layout_mode = 2
-item_count = 2
 selected = 0
-popup/item_0/text = "Rectangle"
-popup/item_0/id = 0
-popup/item_1/text = "Ellipse"
-popup/item_1/id = 1
 
 [node name="X" type="HBoxContainer" parent="."]
 layout_mode = 2

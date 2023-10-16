@@ -10,6 +10,7 @@ public partial class NodePopupMenu : PopupMenu {
     private static readonly Dictionary<long, PackedScene> IdToNodeScene = new() {
         { 0L, GD.Load<PackedScene>("res://addons/GraphMapGenerator/Nodes/bounds_node.tscn") },
         { 1L, GD.Load<PackedScene>("res://addons/GraphMapGenerator/Nodes/shape_node.tscn") },
+        { 2L, GD.Load<PackedScene>("res://addons/GraphMapGenerator/Nodes/generate_node.tscn") },
     };
 
     private MapGeneratorGraphEdit graphEdit;

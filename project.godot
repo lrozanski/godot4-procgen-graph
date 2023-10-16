@@ -21,4 +21,4 @@ project/assembly_name="Graph Map Generator"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GraphMapGenerator/plugin.cfg")
+enabled=PackedStringArray("res://addons/GraphMapGenerator/plugin.cfg", "res://addons/plugin_refresher/plugin.cfg")

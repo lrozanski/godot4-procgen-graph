@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://dby1qn020o6us"]
+
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/GenerateNode.cs" id="1_aidg3"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_jdhnv"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_4we6j"]
+
+[sub_resource type="Resource" id="Resource_djr3f"]
+script = ExtResource("3_4we6j")
+valueType = 0
+leftPort = true
+rightPort = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p52wn"]
+
+[node name="GenerateNode" type="GraphNode"]
+offset_right = 224.0
+offset_bottom = 152.0
+title = "Generate"
+slot/0/left_enabled = true
+slot/0/left_type = 3
+slot/0/left_color = Color(1, 1, 0.0784314, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 3
+slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 4
+slot/1/left_color = Color(0, 1, 0, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 4
+slot/1/right_color = Color(0, 1, 0, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(0.407843, 0, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 0.0784314, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
+slot/4/left_enabled = false
+slot/4/left_type = 0
+slot/4/left_color = Color(0.984314, 0, 0.478431, 1)
+slot/4/left_icon = null
+slot/4/right_enabled = true
+slot/4/right_type = 0
+slot/4/right_color = Color(0.407843, 0, 1, 1)
+slot/4/right_icon = null
+slot/4/draw_stylebox = true
+script = ExtResource("1_aidg3")
+
+[node name="Bounds" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Bounds"
+
+[node name="CellSelection" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Cell Selection"
+
+[node name="CellValue" type="HBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_jdhnv")
+rowData = SubResource("Resource_djr3f")
+
+[node name="Label" type="Label" parent="CellValue"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Cell Value:"
+horizontal_alignment = 2
+
+[node name="SpinBox" type="SpinBox" parent="CellValue"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p52wn")
+
+[node name="MapData" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Map Data"
+horizontal_alignment = 2

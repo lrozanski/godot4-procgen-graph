@@ -25,7 +25,12 @@ public partial class ShapeNode : GraphNode {
 
     public override void _EnterTree() {
         shapeTypeDropdown = GetNode<OptionButton>("ShapeType/OptionButton");
-        shapeTypeDropdown.ItemSelected += index => shapeType = Enum.GetValues<ShapeType>()[index];
+        var values = Enum.GetValues<ShapeType>();
+
+        foreach (var value in values) {
+            shapeTypeDropdown.AddItem(Enum.GetName(value), (int) value);
+        }
+        shapeTypeDropdown.ItemSelected += index => shapeType = values[index];
     }
 
 }
