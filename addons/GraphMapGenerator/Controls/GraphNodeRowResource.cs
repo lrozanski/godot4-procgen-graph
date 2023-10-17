@@ -8,13 +8,14 @@ namespace GraphMapGenerator.addons.GraphMapGenerator.Controls;
 public partial class GraphNodeRowResource : Resource {
 
     [Export]
-    public GraphNodeValueType valueType;
+    public GraphNodeValueType ValueType { get; set; }
 
     [Export]
-    public bool leftPort;
+    public bool LeftPort { get; set; }
     
     [Export]
-    public bool rightPort;
+    public bool RightPort { get; set; }
 
+    public Color PortColor => GraphNodeConstants.ValueToColor[ValueType];
 }
 #endif

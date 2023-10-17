@@ -6,7 +6,7 @@ namespace GraphMapGenerator.addons.GraphMapGenerator.Nodes;
 
 [Tool]
 [GlobalClass]
-public partial class ShapeNode : GraphNode {
+public partial class ShapeNode : MapGenGraphNode {
 
     [Export]
     public ShapeType ShapeType {
@@ -24,6 +24,8 @@ public partial class ShapeNode : GraphNode {
     private OptionButton shapeTypeDropdown;
 
     public override void _EnterTree() {
+        base._EnterTree();
+        
         shapeTypeDropdown = GetNode<OptionButton>("ShapeType/OptionButton");
         var values = Enum.GetValues<ShapeType>();
 

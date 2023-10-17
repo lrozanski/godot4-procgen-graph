@@ -5,7 +5,7 @@ namespace GraphMapGenerator.addons.GraphMapGenerator.Nodes;
 
 [Tool]
 [GlobalClass]
-public partial class GenerateNode : GraphNode {
+public partial class GenerateNode : MapGenGraphNode {
 
     [Export]
     public Rect2I Bounds { get; set; }
@@ -26,6 +26,8 @@ public partial class GenerateNode : GraphNode {
     private SpinBox cellValueSpinBox;
 
     public override void _EnterTree() {
+        base._EnterTree();
+        
         cellValueSpinBox = GetNode<SpinBox>("CellValue/SpinBox");
     }
 

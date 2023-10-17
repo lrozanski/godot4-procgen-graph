@@ -5,7 +5,7 @@ namespace GraphMapGenerator.addons.GraphMapGenerator.Nodes;
 
 [Tool]
 [GlobalClass]
-public partial class InputNode : GraphNode {
+public partial class InputNode : MapGenGraphNode {
 
     [Export]
     public int Seed {
@@ -52,6 +52,8 @@ public partial class InputNode : GraphNode {
     private SpinBox heightSpinBox;
 
     public override void _EnterTree() {
+        base._EnterTree();
+        
         seedSpinBox = GetNode<SpinBox>("Seed/SpinBox");
         widthSpinBox = GetNode<SpinBox>("Width/SpinBox");
         heightSpinBox = GetNode<SpinBox>("Height/SpinBox");

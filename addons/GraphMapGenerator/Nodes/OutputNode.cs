@@ -6,7 +6,7 @@ namespace GraphMapGenerator.addons.GraphMapGenerator.Nodes;
 
 [Tool]
 [GlobalClass]
-public partial class OutputNode : GraphNode {
+public partial class OutputNode : MapGenGraphNode {
 
     [Export]
     public Array<Array<int>> MapData { get; set; }
