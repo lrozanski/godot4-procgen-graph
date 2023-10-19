@@ -1,33 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://evadv6f360vf"]
+[gd_scene load_steps=6 format=3 uid="uid://evadv6f360vf"]
 
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/ShapeNode.cs" id="1_hx0er"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_fgate"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_61mrr"]
+
+[sub_resource type="Resource" id="Resource_qdq4l"]
+script = ExtResource("3_61mrr")
+ValueType = 0
+LeftPort = false
+RightPort = false
+
+[sub_resource type="Resource" id="Resource_wr8ld"]
+script = ExtResource("3_61mrr")
+ValueType = 2
+LeftPort = true
+RightPort = false
 
 [node name="ShapeNode" type="GraphNode"]
 offset_right = 254.0
 offset_bottom = 185.0
 title = "Shape"
-slot/0/left_enabled = true
-slot/0/left_type = 2
-slot/0/left_color = Color(0, 0.501961, 1, 1)
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 0.501961, 0.0784314, 1)
 slot/0/left_icon = null
 slot/0/right_enabled = false
-slot/0/right_type = 2
-slot/0/right_color = Color(0, 0.501961, 1, 1)
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 slot/1/left_enabled = true
-slot/1/left_type = 3
+slot/1/left_type = 2
 slot/1/left_color = Color(1, 1, 0.0784314, 1)
 slot/1/left_icon = null
 slot/1/right_enabled = false
-slot/1/right_type = 0
-slot/1/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/right_type = 2
+slot/1/right_color = Color(1, 1, 0.0784314, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
 script = ExtResource("1_hx0er")
 
 [node name="ShapeType" type="HBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_fgate")
+RowData = SubResource("Resource_qdq4l")
 
 [node name="Label" type="Label" parent="ShapeType"]
 layout_mode = 2
@@ -39,13 +55,25 @@ horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="ShapeType"]
 layout_mode = 2
+item_count = 2
 selected = 0
+popup/item_0/text = "Rectangle"
+popup/item_0/id = 0
+popup/item_1/text = "Ellipse"
+popup/item_1/id = 1
 
-[node name="X" type="HBoxContainer" parent="."]
+[node name="Bounds" type="HBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_fgate")
+FieldVisible = false
+RowData = SubResource("Resource_wr8ld")
 
-[node name="Label" type="Label" parent="X"]
+[node name="Label" type="Label" parent="Bounds"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 text = "Bounds"
+
+[node name="Control" type="Control" parent="Bounds"]
+visible = false
+layout_mode = 2

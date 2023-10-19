@@ -29,8 +29,22 @@ public partial class GraphNodeRow : HBoxContainer {
     public T GetField<T>() where T : Control => GetChild<T>(1);
 
     public void ToggleField(bool active) {
-        GetField<Control>().Visible = active;
-        GetLabel().HorizontalAlignment = active switch {
+        var field = GetField<Control>();
+
+        if (field == null) {
+            return;
+        }
+        field.Visible = active;
+        UpdateLabelAlignment(active);
+    }
+
+    private void UpdateLabelAlignment(bool active) {
+        var label = GetLabel();
+
+        if (label == null) {
+            return;
+        }
+        label.HorizontalAlignment = active switch {
             false when RowData.LeftPort => HorizontalAlignment.Left,
             false when RowData.RightPort => HorizontalAlignment.Right,
             false when RowData.LeftPort && RowData.RightPort => HorizontalAlignment.Center,
@@ -43,13 +57,8 @@ public partial class GraphNodeRow : HBoxContainer {
 
     public override void _EnterTree() {
         graphNode = GetParent<MapGenGraphNode>();
-        graphNode.UpdatePorts();
-
         RowData ??= new GraphNodeRowResource();
-    }
-
-    public override void _ExitTree() {
-        graphNode.UpdatePorts();
+        UpdateLabelAlignment(FieldVisible);
     }
 
     public override string[] _GetConfigurationWarnings() {

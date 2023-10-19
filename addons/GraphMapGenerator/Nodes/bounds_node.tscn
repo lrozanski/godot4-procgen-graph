@@ -1,25 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvpl6rg5bso45"]
+[gd_scene load_steps=9 format=3 uid="uid://bvpl6rg5bso45"]
 
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/BoundsNode.cs" id="1_6vwl8"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_uj0q7"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_wxfbc"]
+
+[sub_resource type="Resource" id="Resource_26rnj"]
+script = ExtResource("3_wxfbc")
+ValueType = 0
+LeftPort = true
+RightPort = false
+
+[sub_resource type="Resource" id="Resource_dmu83"]
+script = ExtResource("3_wxfbc")
+ValueType = 0
+LeftPort = true
+RightPort = false
+
+[sub_resource type="Resource" id="Resource_4icd3"]
+script = ExtResource("3_wxfbc")
+ValueType = 0
+LeftPort = true
+RightPort = false
+
+[sub_resource type="Resource" id="Resource_488i8"]
+script = ExtResource("3_wxfbc")
+ValueType = 0
+LeftPort = true
+RightPort = false
+
+[sub_resource type="Resource" id="Resource_lkwhg"]
+script = ExtResource("3_wxfbc")
+ValueType = 2
+LeftPort = false
+RightPort = true
 
 [node name="BoundsNode" type="GraphNode"]
-offset_right = 335.0
-offset_bottom = 185.0
+offset_right = 220.0
+offset_bottom = 210.0
 title = "Bounds"
-slot/0/left_enabled = false
+slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 0.501961, 0.0784314, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
-slot/0/right_type = 3
-slot/0/right_color = Color(1, 1, 0.0784314, 1)
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 slot/1/left_enabled = true
 slot/1/left_type = 0
 slot/1/left_color = Color(1, 0.501961, 0.0784314, 1)
 slot/1/left_icon = null
-slot/1/right_enabled = true
+slot/1/right_enabled = false
 slot/1/right_type = 0
 slot/1/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/1/right_icon = null
@@ -28,7 +60,7 @@ slot/2/left_enabled = true
 slot/2/left_type = 0
 slot/2/left_color = Color(1, 0.501961, 0.0784314, 1)
 slot/2/left_icon = null
-slot/2/right_enabled = true
+slot/2/right_enabled = false
 slot/2/right_type = 0
 slot/2/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/2/right_icon = null
@@ -37,40 +69,32 @@ slot/3/left_enabled = true
 slot/3/left_type = 0
 slot/3/left_color = Color(1, 0.501961, 0.0784314, 1)
 slot/3/left_icon = null
-slot/3/right_enabled = true
+slot/3/right_enabled = false
 slot/3/right_type = 0
 slot/3/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
-slot/4/left_enabled = true
-slot/4/left_type = 0
-slot/4/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/4/left_enabled = false
+slot/4/left_type = 2
+slot/4/left_color = Color(1, 1, 0.0784314, 1)
 slot/4/left_icon = null
 slot/4/right_enabled = true
-slot/4/right_type = 0
-slot/4/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/4/right_type = 2
+slot/4/right_color = Color(1, 1, 0.0784314, 1)
 slot/4/right_icon = null
 slot/4/draw_stylebox = true
 script = ExtResource("1_6vwl8")
 
-[node name="Bounds" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Bounds"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Bounds"
-horizontal_alignment = 2
-
 [node name="X" type="HBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_uj0q7")
+RowData = SubResource("Resource_26rnj")
 
 [node name="Label" type="Label" parent="X"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-text = "X:"
+text = "X"
 horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="X"]
@@ -79,12 +103,14 @@ size_flags_horizontal = 3
 
 [node name="Y" type="HBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_uj0q7")
+RowData = SubResource("Resource_dmu83")
 
 [node name="Label" type="Label" parent="Y"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-text = "Y:"
+text = "Y"
 horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="Y"]
@@ -93,28 +119,51 @@ size_flags_horizontal = 3
 
 [node name="Width" type="HBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_uj0q7")
+RowData = SubResource("Resource_4icd3")
 
 [node name="Label" type="Label" parent="Width"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-text = "Width:"
+text = "Width"
 horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="Width"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
 
 [node name="Height" type="HBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_uj0q7")
+RowData = SubResource("Resource_488i8")
 
 [node name="Label" type="Label" parent="Height"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-text = "Height:"
+text = "Height"
 horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="Height"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+
+[node name="Bounds" type="HBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_uj0q7")
+RowData = SubResource("Resource_lkwhg")
+
+[node name="Label" type="Label" parent="Bounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Bounds"
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="Bounds"]
+layout_mode = 2

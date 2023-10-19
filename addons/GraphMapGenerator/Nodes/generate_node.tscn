@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_jdhnv"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_4we6j"]
 
-[sub_resource type="Resource" id="Resource_xflyp"]
+[sub_resource type="Resource" id="Resource_l8oxs"]
 script = ExtResource("3_4we6j")
 ValueType = 2
 LeftPort = true
 RightPort = false
 
-[sub_resource type="Resource" id="Resource_v2prl"]
+[sub_resource type="Resource" id="Resource_7vjii"]
 script = ExtResource("3_4we6j")
 ValueType = 3
 LeftPort = true
@@ -22,13 +22,13 @@ ValueType = 0
 LeftPort = true
 RightPort = false
 
-[sub_resource type="Resource" id="Resource_istol"]
+[sub_resource type="Resource" id="Resource_3uhd6"]
 script = ExtResource("3_4we6j")
 ValueType = 4
 LeftPort = false
 RightPort = true
 
-[node name="GenerateNode" type="GraphNode"]
+[node name="GenerateNode" type="GraphNode" node_paths=PackedStringArray("cellValueSpinBox")]
 offset_right = 224.0
 offset_bottom = 152.0
 title = "Generate"
@@ -69,12 +69,13 @@ slot/3/right_color = Color(0.407843, 0, 1, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
 script = ExtResource("1_aidg3")
+cellValueSpinBox = NodePath("CellValue/SpinBox")
 
 [node name="Bounds" type="HBoxContainer" parent="."]
 layout_mode = 2
 script = ExtResource("2_jdhnv")
 FieldVisible = false
-RowData = SubResource("Resource_xflyp")
+RowData = SubResource("Resource_l8oxs")
 
 [node name="Label" type="Label" parent="Bounds"]
 layout_mode = 2
@@ -82,7 +83,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 text = "Bounds"
 
-[node name="SpinBox" type="SpinBox" parent="Bounds"]
+[node name="Control" type="Control" parent="Bounds"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -91,7 +92,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 script = ExtResource("2_jdhnv")
 FieldVisible = false
-RowData = SubResource("Resource_v2prl")
+RowData = SubResource("Resource_7vjii")
 
 [node name="Label" type="Label" parent="CellSelection"]
 layout_mode = 2
@@ -99,7 +100,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 text = "Cell Selection"
 
-[node name="SpinBox" type="SpinBox" parent="CellSelection"]
+[node name="Control" type="Control" parent="CellSelection"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -124,7 +125,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 script = ExtResource("2_jdhnv")
 FieldVisible = false
-RowData = SubResource("Resource_istol")
+RowData = SubResource("Resource_3uhd6")
 
 [node name="Label" type="Label" parent="MapData"]
 layout_mode = 2
@@ -133,7 +134,7 @@ size_flags_stretch_ratio = 0.5
 text = "Map Data"
 horizontal_alignment = 2
 
-[node name="SpinBox" type="SpinBox" parent="MapData"]
+[node name="Control" type="Control" parent="MapData"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3

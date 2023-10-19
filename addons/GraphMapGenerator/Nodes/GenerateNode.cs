@@ -22,14 +22,10 @@ public partial class GenerateNode : MapGenGraphNode {
         }
     }
 
-    private int cellValue;
+    [Export]
     private SpinBox cellValueSpinBox;
 
-    public override void _EnterTree() {
-        base._EnterTree();
-        
-        cellValueSpinBox = GetNode<SpinBox>("CellValue/SpinBox");
-    }
+    private int cellValue;
 
 }
 #endif

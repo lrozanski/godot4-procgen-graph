@@ -1,6 +1,7 @@
 #if TOOLS
 using Godot;
 using Godot.Collections;
+using GraphMapGenerator.addons.GraphMapGenerator.Controls;
 using GraphMapGenerator.addons.GraphMapGenerator.Nodes;
 
 namespace GraphMapGenerator.addons.GraphMapGenerator;
@@ -19,6 +20,7 @@ public partial class MapGeneratorGraphEdit : GraphEdit {
             return;
         }
         ConnectNode(node, (int) port, toNode, (int) toPort);
+        GetNode<MapGenGraphNode>((string) toNode).ToggleFieldVisibility((int) toPort, false);
     }
 
     private void HandleDisconnectionRequest(StringName node, long port, StringName toNode, long toPort) {
@@ -26,12 +28,13 @@ public partial class MapGeneratorGraphEdit : GraphEdit {
             return;
         }
         DisconnectNode(node, (int) port, toNode, (int) toPort);
+        GetNode<MapGenGraphNode>((string) toNode).ToggleFieldVisibility((int) toPort, true);
     }
 
     private void HandleDeleteNodesRequest(Array nodes) {
         foreach (var nodePath in nodes) {
             var nodeName = (string) nodePath.AsStringName();
-            var node = GetNode<GraphNode>(nodeName);
+            var node = GetNode<MapGenGraphNode>(nodeName);
 
             if (node is InputNode or OutputNode) {
                 continue;
@@ -42,13 +45,16 @@ public partial class MapGeneratorGraphEdit : GraphEdit {
         }
     }
 
-    private void DisconnectAllPorts(GraphNode node) {
+    private void DisconnectAllPorts(MapGenGraphNode node) {
         foreach (var entry in GetConnectionList()) {
             var from = (string) entry["from_node"].AsStringName();
             var fromPort = entry["from_port"].AsInt32();
             var to = (string) entry["to_node"].AsStringName();
             var toPort = entry["to_port"].AsInt32();
 
+            if (to == node.Name) {
+                node.ToggleFieldVisibility(toPort, true);
+            }
             if (from == node.Name || to == node.Name) {
                 DisconnectNode(from, fromPort, to, toPort);
             }

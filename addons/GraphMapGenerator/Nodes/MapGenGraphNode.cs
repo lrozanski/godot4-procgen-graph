@@ -10,18 +10,25 @@ namespace GraphMapGenerator.addons.GraphMapGenerator.Nodes;
 [GlobalClass]
 public abstract partial class MapGenGraphNode : GraphNode {
 
+    public GraphNodeRow GetField(int index) => GetChild<GraphNodeRow>(index);
+
+    public void ToggleFieldVisibility(int index, bool state) => GetField(index).FieldVisible = state;
+    
     public override void _EnterTree() {
-        if (!IsConnected(Node.SignalName.ChildEnteredTree, Callable.From<Node>(UpdatePortsWithArgs))) {
-            ChildEnteredTree += UpdatePortsWithArgs;
+        var callableWithArgs = Callable.From<Node>(UpdatePortsWithArgs);
+        var callable = Callable.From(UpdatePorts);
+
+        if (!IsConnected(Node.SignalName.ChildEnteredTree, callableWithArgs)) {
+            Connect(Node.SignalName.ChildEnteredTree, callableWithArgs);
         }
-        if (!IsConnected(Node.SignalName.ChildExitingTree, Callable.From<Node>(UpdatePortsWithArgs))) {
-            ChildExitingTree += UpdatePortsWithArgs;
+        if (!IsConnected(Node.SignalName.ChildExitingTree, callableWithArgs)) {
+            Connect(Node.SignalName.ChildExitingTree, callableWithArgs);
         }
-        if (!IsConnected(Node.SignalName.ChildOrderChanged, Callable.From(UpdatePorts))) {
-            ChildOrderChanged += UpdatePorts;
+        if (!IsConnected(Node.SignalName.ChildOrderChanged, callable)) {
+            Connect(Node.SignalName.ChildOrderChanged, callable);
         }
-        if (!IsConnected(CanvasItem.SignalName.VisibilityChanged, Callable.From(UpdatePorts))) {
-            VisibilityChanged += UpdatePorts;
+        if (!IsConnected(CanvasItem.SignalName.VisibilityChanged, callable)) {
+            Connect(CanvasItem.SignalName.VisibilityChanged, callable);
         }
     }
 
@@ -44,6 +51,9 @@ public abstract partial class MapGenGraphNode : GraphNode {
                 continue;
             }
             var data = row.RowData;
+            if (data == null) {
+                return;
+            }
             SetSlot(i, data.LeftPort, (int) data.ValueType, data.PortColor, data.RightPort, (int) data.ValueType, data.PortColor);
         }
         QueueRedraw();
