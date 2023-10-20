@@ -53,14 +53,14 @@ public partial class InputNode : MapGenGraphNode {
 
     public override void _EnterTree() {
         base._EnterTree();
-        
+
         seedSpinBox = GetNode<SpinBox>("Seed/SpinBox");
         widthSpinBox = GetNode<SpinBox>("Width/SpinBox");
         heightSpinBox = GetNode<SpinBox>("Height/SpinBox");
 
-        seedSpinBox.ValueChanged += value => seed = (int) value;
-        widthSpinBox.ValueChanged += value => width = (int) value;
-        heightSpinBox.ValueChanged += value => height = (int) value;
+        TryConnect<double>(seedSpinBox, Range.SignalName.ValueChanged, value => seed = (int) value);
+        TryConnect<double>(widthSpinBox, Range.SignalName.ValueChanged, value => width = (int) value);
+        TryConnect<double>(heightSpinBox, Range.SignalName.ValueChanged, value => height = (int) value);
     }
 
 }

@@ -37,23 +37,10 @@ public partial class BoundsNode : MapGenGraphNode {
         widthSpinBox = GetNode<SpinBox>("Width/SpinBox");
         heightSpinBox = GetNode<SpinBox>("Height/SpinBox");
 
-        var xCallable = Callable.From<double>(UpdateBoundsX);
-        var yCallable = Callable.From<double>(UpdateBoundsY);
-        var widthCallable = Callable.From<double>(UpdateBoundsWidth);
-        var heightCallable = Callable.From<double>(UpdateBoundsHeight);
-
-        if (!xSpinBox.IsConnected(Range.SignalName.ValueChanged, xCallable)) {
-            xSpinBox.Connect(Range.SignalName.ValueChanged, xCallable);
-        }
-        if (!ySpinBox.IsConnected(Range.SignalName.ValueChanged, yCallable)) {
-            ySpinBox.Connect(Range.SignalName.ValueChanged, yCallable);
-        }
-        if (!widthSpinBox.IsConnected(Range.SignalName.ValueChanged, widthCallable)) {
-            widthSpinBox.Connect(Range.SignalName.ValueChanged, widthCallable);
-        }
-        if (!heightSpinBox.IsConnected(Range.SignalName.ValueChanged, heightCallable)) {
-            heightSpinBox.Connect(Range.SignalName.ValueChanged, heightCallable);
-        }
+        TryConnect<double>(xSpinBox, Range.SignalName.ValueChanged, UpdateBoundsX);
+        TryConnect<double>(ySpinBox, Range.SignalName.ValueChanged, UpdateBoundsY);
+        TryConnect<double>(widthSpinBox, Range.SignalName.ValueChanged, UpdateBoundsWidth);
+        TryConnect<double>(heightSpinBox, Range.SignalName.ValueChanged, UpdateBoundsHeight);
     }
 
     private void UpdateBoundsX(double value) => bounds = new Rect2I((int) value, bounds.Position.Y, bounds.Size.X, bounds.Size.Y);

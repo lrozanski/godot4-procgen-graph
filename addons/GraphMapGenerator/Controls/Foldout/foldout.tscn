@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://du21oxm2of6ke"]
+
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/Foldout/Foldout.cs" id="1_yb33e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7x5k1"]
+
+[node name="Foldout" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yb33e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "v"
+flat = true
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Foldout"
+
+[node name="Content" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7x5k1")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Value:"
+
+[node name="SpinBox" type="SpinBox" parent="Content/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Content/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "Value:"
+
+[node name="SpinBox" type="SpinBox" parent="Content/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Content/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "Value:"
+
+[node name="SpinBox" type="SpinBox" parent="Content/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2

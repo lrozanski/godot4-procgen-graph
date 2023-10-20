@@ -25,15 +25,15 @@ public partial class ShapeNode : MapGenGraphNode {
 
     public override void _EnterTree() {
         base._EnterTree();
-        
         shapeTypeDropdown = GetNode<OptionButton>("ShapeType/OptionButton");
-        var values = Enum.GetValues<ShapeType>();
 
-        foreach (var value in values) {
+        foreach (var value in Enum.GetValues<ShapeType>()) {
             shapeTypeDropdown.AddItem(Enum.GetName(value), (int) value);
         }
-        shapeTypeDropdown.ItemSelected += index => shapeType = values[index];
+        TryConnect<long>(shapeTypeDropdown, OptionButton.SignalName.ItemSelected, SelectItem);
     }
+
+    private void SelectItem(long index) => shapeType = Enum.GetValues<ShapeType>()[index];
 
 }
 #endif

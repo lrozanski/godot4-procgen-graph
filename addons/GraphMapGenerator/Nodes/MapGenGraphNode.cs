@@ -1,4 +1,5 @@
 #if TOOLS
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -13,29 +14,18 @@ public abstract partial class MapGenGraphNode : GraphNode {
     public GraphNodeRow GetField(int index) => GetChild<GraphNodeRow>(index);
 
     public void ToggleFieldVisibility(int index, bool state) => GetField(index).FieldVisible = state;
-    
-    public override void _EnterTree() {
-        var callableWithArgs = Callable.From<Node>(UpdatePortsWithArgs);
-        var callable = Callable.From(UpdatePorts);
 
-        if (!IsConnected(Node.SignalName.ChildEnteredTree, callableWithArgs)) {
-            Connect(Node.SignalName.ChildEnteredTree, callableWithArgs);
-        }
-        if (!IsConnected(Node.SignalName.ChildExitingTree, callableWithArgs)) {
-            Connect(Node.SignalName.ChildExitingTree, callableWithArgs);
-        }
-        if (!IsConnected(Node.SignalName.ChildOrderChanged, callable)) {
-            Connect(Node.SignalName.ChildOrderChanged, callable);
-        }
-        if (!IsConnected(CanvasItem.SignalName.VisibilityChanged, callable)) {
-            Connect(CanvasItem.SignalName.VisibilityChanged, callable);
-        }
+    public override void _EnterTree() {
+        TryConnect<Node>(this, Node.SignalName.ChildEnteredTree, UpdatePortsWithArgs);
+        TryConnect<Node>(this, Node.SignalName.ChildExitingTree, UpdatePortsWithArgs);
+        TryConnect(this, Node.SignalName.ChildOrderChanged, UpdatePorts);
+        TryConnect(this, CanvasItem.SignalName.VisibilityChanged, UpdatePorts);
     }
 
     private void UpdatePortsWithArgs(Node node) => UpdatePorts();
 
     public void UpdatePorts() {
-        if (!IsInstanceValid(this)) {
+        if (!IsInstanceValid(this) || GetChildCount() == 0) {
             return;
         }
         var nodes = GetChildren();
@@ -66,10 +56,25 @@ public abstract partial class MapGenGraphNode : GraphNode {
         if (baseWarnings != null) {
             warnings.AddRange(base._GetConfigurationWarnings());
         }
-        if (GetChildren().Any(child => child is not GraphNodeRow)) {
+        if (GetChildCount() > 0 && GetChildren().Any(child => child is not GraphNodeRow)) {
             warnings.Add("This node only supports GraphNodeRow controls");
         }
         return warnings.ToArray();
+    }
+
+    protected void TryConnect(Node node, StringName signalName, Action action) => TryConnect(node, signalName, Callable.From(action));
+
+    protected void TryConnect<[MustBeVariant] T>(Node node, StringName signalName, Action<T> action) => TryConnect(node, signalName, Callable.From(action));
+
+    protected void TryConnect<TR>(Node node, StringName signalName, Func<TR> func) => TryConnect(node, signalName, Callable.From(func));
+
+    protected void TryConnect<[MustBeVariant] T, TR>(Node node, StringName signalName, Func<T, TR> func) => TryConnect(node, signalName, Callable.From(func));
+
+    private void TryConnect(Node node, StringName signalName, Callable callable) {
+        if (node.IsConnected(signalName, callable)) {
+            return;
+        }
+        node.Connect(signalName, callable);
     }
 }
 #endif

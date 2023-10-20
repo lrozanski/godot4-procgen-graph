@@ -41,7 +41,7 @@ public partial class GraphNodeRow : HBoxContainer {
     private void UpdateLabelAlignment(bool active) {
         var label = GetLabel();
 
-        if (label == null) {
+        if (label == null || RowData == null) {
             return;
         }
         label.HorizontalAlignment = active switch {

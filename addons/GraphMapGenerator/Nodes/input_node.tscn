@@ -67,6 +67,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "Seed:"
+horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="Seed"]
 layout_mode = 2
@@ -83,6 +84,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "Width:"
+horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="Width"]
 layout_mode = 2
@@ -101,6 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "Height:"
+horizontal_alignment = 2
 
 [node name="SpinBox" type="SpinBox" parent="Height"]
 layout_mode = 2
