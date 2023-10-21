@@ -1,8 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dby1qn020o6us"]
+[gd_scene load_steps=10 format=3 uid="uid://dby1qn020o6us"]
 
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/GenerateNode.cs" id="1_aidg3"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Generate/GenerateNode.cs" id="1_aidg3"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Generate/GenerateNodeData.cs" id="2_gt08x"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_jdhnv"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_4we6j"]
+
+[sub_resource type="Resource" id="Resource_6qu2b"]
+script = ExtResource("2_gt08x")
+CellValue = 1
+Position = Vector2i(0, 0)
 
 [sub_resource type="Resource" id="Resource_l8oxs"]
 script = ExtResource("3_4we6j")
@@ -28,7 +34,7 @@ ValueType = 4
 LeftPort = false
 RightPort = true
 
-[node name="GenerateNode" type="GraphNode" node_paths=PackedStringArray("cellValueSpinBox")]
+[node name="GenerateNode" type="GraphNode"]
 offset_right = 224.0
 offset_bottom = 152.0
 title = "Generate"
@@ -69,7 +75,7 @@ slot/3/right_color = Color(0.407843, 0, 1, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
 script = ExtResource("1_aidg3")
-cellValueSpinBox = NodePath("CellValue/SpinBox")
+NodeData = SubResource("Resource_6qu2b")
 
 [node name="Bounds" type="HBoxContainer" parent="."]
 layout_mode = 2

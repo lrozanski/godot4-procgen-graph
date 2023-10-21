@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://ctml4jebr6885"]
+[gd_scene load_steps=2 format=3 uid="uid://ctml4jebr6885"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="TileSet" uid="uid://cn3cjr7gb0lnw" path="res://demo/tile_set.tres" id="1_qkd7n"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_qkd7n")
+format = 2
+
+[node name="TileMapGraphProcessor" type="Node" parent="TileMap"]

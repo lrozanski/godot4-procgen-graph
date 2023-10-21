@@ -1,23 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://gjkcgl5q8351"]
+[gd_scene load_steps=9 format=3 uid="uid://gjkcgl5q8351"]
 
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/InputNode.cs" id="1_jjcms"]
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_k5f5s"]
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_eh6cn"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Input/InputNode.cs" id="1_48ti1"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Input/InputNodeData.cs" id="2_cl84q"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="3_dcv2c"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="4_7tsy7"]
+
+[sub_resource type="Resource" id="Resource_x8pmy"]
+script = ExtResource("2_cl84q")
+Seed = 0
+Width = 0
+Height = 0
+Position = Vector2i(0, 0)
 
 [sub_resource type="Resource" id="Resource_oo6wp"]
-script = ExtResource("3_eh6cn")
+script = ExtResource("4_7tsy7")
 ValueType = 0
 LeftPort = false
 RightPort = true
 
 [sub_resource type="Resource" id="Resource_ilus7"]
-script = ExtResource("3_eh6cn")
+script = ExtResource("4_7tsy7")
 ValueType = 0
 LeftPort = false
 RightPort = true
 
 [sub_resource type="Resource" id="Resource_gpaay"]
-script = ExtResource("3_eh6cn")
+script = ExtResource("4_7tsy7")
 ValueType = 0
 LeftPort = false
 RightPort = true
@@ -53,13 +61,12 @@ slot/2/right_type = 0
 slot/2/right_color = Color(1, 0.501961, 0.0784314, 1)
 slot/2/right_icon = null
 slot/2/draw_stylebox = true
-script = ExtResource("1_jjcms")
-Width = 1
-Height = 1
+script = ExtResource("1_48ti1")
+NodeData = SubResource("Resource_x8pmy")
 
 [node name="Seed" type="HBoxContainer" parent="."]
 layout_mode = 2
-script = ExtResource("2_k5f5s")
+script = ExtResource("3_dcv2c")
 RowData = SubResource("Resource_oo6wp")
 
 [node name="Label" type="Label" parent="Seed"]
@@ -76,7 +83,7 @@ max_value = 1e+09
 
 [node name="Width" type="HBoxContainer" parent="."]
 layout_mode = 2
-script = ExtResource("2_k5f5s")
+script = ExtResource("3_dcv2c")
 RowData = SubResource("Resource_ilus7")
 
 [node name="Label" type="Label" parent="Width"]
@@ -95,7 +102,7 @@ value = 1.0
 
 [node name="Height" type="HBoxContainer" parent="."]
 layout_mode = 2
-script = ExtResource("2_k5f5s")
+script = ExtResource("3_dcv2c")
 RowData = SubResource("Resource_gpaay")
 
 [node name="Label" type="Label" parent="Height"]

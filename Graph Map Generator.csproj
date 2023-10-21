@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>GraphMapGenerator</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="addons\GraphMapGenerator\Graph\Nodes\Output\" />
+  </ItemGroup>
 </Project>

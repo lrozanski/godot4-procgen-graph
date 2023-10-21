@@ -1,10 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfq1325ommvxi"]
+[gd_scene load_steps=10 format=3 uid="uid://bfq1325ommvxi"]
 
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/MapGeneratorGraphEdit.cs" id="1_jj0xo"]
-[ext_resource type="PackedScene" uid="uid://gjkcgl5q8351" path="res://addons/GraphMapGenerator/Nodes/input_node.tscn" id="1_w8i4o"]
-[ext_resource type="PackedScene" uid="uid://cfrcp8arnnxr" path="res://addons/GraphMapGenerator/Nodes/output_node.tscn" id="2_rpvf1"]
-[ext_resource type="PackedScene" uid="uid://bvpl6rg5bso45" path="res://addons/GraphMapGenerator/Nodes/bounds_node.tscn" id="3_x0qgg"]
+[ext_resource type="PackedScene" uid="uid://gjkcgl5q8351" path="res://addons/GraphMapGenerator/Graph/Nodes/Input/input_node.tscn" id="3_u8byi"]
+[ext_resource type="PackedScene" uid="uid://bvpl6rg5bso45" path="res://addons/GraphMapGenerator/Graph/Nodes/Bounds/bounds_node.tscn" id="3_x0qgg"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Input/InputNodeData.cs" id="4_hls4r"]
+[ext_resource type="PackedScene" uid="uid://cfrcp8arnnxr" path="res://addons/GraphMapGenerator/Graph/Nodes/Output/output_node.tscn" id="4_tcfab"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/NodePopupMenu.cs" id="5_ee20d"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Bounds/BoundsNodeData.cs" id="7_5fsvm"]
+
+[sub_resource type="Resource" id="Resource_h6rs6"]
+script = ExtResource("4_hls4r")
+Seed = 0
+Width = 0
+Height = 0
+Position = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Resource_nsbt4"]
+script = ExtResource("7_5fsvm")
+X = 0
+Y = 0
+Width = 0
+Height = 0
+Position = Vector2i(0, 0)
 
 [node name="MapGenerationGraphDock" type="Control"]
 layout_mode = 3
@@ -35,7 +52,7 @@ item_2/text = "Generate"
 item_2/id = 2
 script = ExtResource("5_ee20d")
 
-[node name="InputNode" parent="GraphEdit" instance=ExtResource("1_w8i4o")]
+[node name="InputNode" parent="GraphEdit" instance=ExtResource("3_u8byi")]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 200.0
@@ -43,8 +60,15 @@ offset_right = 280.0
 offset_bottom = 352.0
 mouse_filter = 1
 position_offset = Vector2(56, 200)
+slot/0/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/right_color = Color(1, 0.501961, 0.0784314, 1)
+NodeData = SubResource("Resource_h6rs6")
 
-[node name="OutputNode" parent="GraphEdit" instance=ExtResource("2_rpvf1")]
+[node name="OutputNode" parent="GraphEdit" instance=ExtResource("4_tcfab")]
 layout_mode = 0
 offset_left = 864.0
 offset_top = 200.0
@@ -52,6 +76,8 @@ offset_right = 1088.0
 offset_bottom = 352.0
 mouse_filter = 1
 position_offset = Vector2(864, 200)
+slot/0/left_color = Color(0.407843, 0, 1, 1)
+slot/0/right_color = Color(0.407843, 0, 1, 1)
 
 [node name="BoundsNode" parent="GraphEdit" instance=ExtResource("3_x0qgg")]
 layout_mode = 0
@@ -61,3 +87,14 @@ offset_right = 696.0
 offset_bottom = 410.0
 mouse_filter = 1
 position_offset = Vector2(472, 200)
+slot/0/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/0/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/1/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/2/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/3/left_color = Color(1, 0.501961, 0.0784314, 1)
+slot/3/right_color = Color(1, 0.501961, 0.0784314, 1)
+slot/4/left_color = Color(1, 1, 0.0784314, 1)
+slot/4/right_color = Color(1, 1, 0.0784314, 1)
+NodeData = SubResource("Resource_nsbt4")

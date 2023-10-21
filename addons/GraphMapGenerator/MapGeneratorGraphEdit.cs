@@ -1,8 +1,9 @@
 #if TOOLS
 using Godot;
 using Godot.Collections;
-using GraphMapGenerator.addons.GraphMapGenerator.Controls;
+using GraphMapGenerator.addons.GraphMapGenerator.Graph.Nodes.Input;
 using GraphMapGenerator.addons.GraphMapGenerator.Nodes;
+using OutputNode = GraphMapGenerator.addons.GraphMapGenerator.Graph.Nodes.Output.OutputNode;
 
 namespace GraphMapGenerator.addons.GraphMapGenerator;
 

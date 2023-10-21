@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://evadv6f360vf"]
+[gd_scene load_steps=8 format=3 uid="uid://evadv6f360vf"]
 
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/ShapeNode.cs" id="1_hx0er"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Shape/ShapeNode.cs" id="1_hx0er"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Shape/ShapeNodeData.cs" id="2_act71"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_fgate"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_61mrr"]
+
+[sub_resource type="Resource" id="Resource_285lc"]
+script = ExtResource("2_act71")
+ShapeType = 0
+Position = Vector2i(0, 0)
 
 [sub_resource type="Resource" id="Resource_qdq4l"]
 script = ExtResource("3_61mrr")
@@ -39,6 +45,7 @@ slot/1/right_color = Color(1, 1, 0.0784314, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
 script = ExtResource("1_hx0er")
+NodeData = SubResource("Resource_285lc")
 
 [node name="ShapeType" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -55,12 +62,28 @@ horizontal_alignment = 2
 
 [node name="OptionButton" type="OptionButton" parent="ShapeType"]
 layout_mode = 2
-item_count = 2
+item_count = 10
 selected = 0
 popup/item_0/text = "Rectangle"
 popup/item_0/id = 0
 popup/item_1/text = "Ellipse"
 popup/item_1/id = 1
+popup/item_2/text = "Rectangle"
+popup/item_2/id = 0
+popup/item_3/text = "Ellipse"
+popup/item_3/id = 1
+popup/item_4/text = "Rectangle"
+popup/item_4/id = 0
+popup/item_5/text = "Ellipse"
+popup/item_5/id = 1
+popup/item_6/text = "Rectangle"
+popup/item_6/id = 0
+popup/item_7/text = "Ellipse"
+popup/item_7/id = 1
+popup/item_8/text = "Rectangle"
+popup/item_8/id = 0
+popup/item_9/text = "Ellipse"
+popup/item_9/id = 1
 
 [node name="Bounds" type="HBoxContainer" parent="."]
 layout_mode = 2

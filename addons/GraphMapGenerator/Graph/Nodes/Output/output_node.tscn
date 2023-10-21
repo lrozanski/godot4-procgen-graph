@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfrcp8arnnxr"]
 
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/OutputNode.cs" id="1_ph208"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Output/OutputNode.cs" id="1_ph208"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_hh3a4"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_cqx07"]
 
@@ -24,7 +24,6 @@ slot/0/right_color = Color(0.407843, 0, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_ph208")
-MapData = []
 
 [node name="GraphNodeRow" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -1,8 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvpl6rg5bso45"]
+[gd_scene load_steps=11 format=3 uid="uid://bvpl6rg5bso45"]
 
-[ext_resource type="Script" path="res://addons/GraphMapGenerator/Nodes/BoundsNode.cs" id="1_6vwl8"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Bounds/BoundsNode.cs" id="1_6vwl8"]
+[ext_resource type="Script" path="res://addons/GraphMapGenerator/Graph/Nodes/Bounds/BoundsNodeData.cs" id="2_5wm0m"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRow.cs" id="2_uj0q7"]
 [ext_resource type="Script" path="res://addons/GraphMapGenerator/Controls/GraphNodeRowResource.cs" id="3_wxfbc"]
+
+[sub_resource type="Resource" id="Resource_h8m47"]
+script = ExtResource("2_5wm0m")
+X = 0
+Y = 0
+Width = 1
+Height = 1
+Position = Vector2i(0, 0)
 
 [sub_resource type="Resource" id="Resource_26rnj"]
 script = ExtResource("3_wxfbc")
@@ -84,6 +93,7 @@ slot/4/right_color = Color(1, 1, 0.0784314, 1)
 slot/4/right_icon = null
 slot/4/draw_stylebox = true
 script = ExtResource("1_6vwl8")
+NodeData = SubResource("Resource_h8m47")
 
 [node name="X" type="HBoxContainer" parent="."]
 layout_mode = 2
